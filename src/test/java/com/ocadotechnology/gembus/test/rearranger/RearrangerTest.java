@@ -348,6 +348,11 @@ public class RearrangerTest {
     }
 
     record NotNullFromLombokRecord(@NonNull String notNullField) {
+        NotNullFromLombokRecord {
+            if (notNullField == null) {
+                throw new NullPointerException("notNullField is marked non-null but is null");
+            }
+        }
     }
 
     class PojoClass {
